@@ -1,0 +1,13 @@
+{
+    "files_js": [
+        "Contenu/js/jquery-3.2.1.min.js",
+        "https://unpkg.com/popper.js@1.12.9/dist/umd/popper.js",
+        "Contenu/bootstrap/js/bootstrap.min.js",
+        "Contenu/js/lazyload.min.js",
+        "Contenu/js/bootstrap-filestyle.min.js",
+        "Contenu/js/simplycode.js"
+    ],
+    "files_css": [
+        "Contenu/bootstrap/css/bootstrap.min.css"
+    ]
+}

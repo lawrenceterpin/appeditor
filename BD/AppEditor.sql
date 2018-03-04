@@ -1,0 +1,78 @@
+/* Testé sous MySQL 5.x */
+
+drop table if exists T_FILES;
+drop table if exists T_BILLET;
+drop table if exists T_GAME;
+drop table if exists T_COMMENTAIRE;
+drop table if exists T_UTILISATEUR;
+drop table if exists T_PAGES;
+
+
+# CREATE
+create table T_FILES (
+  FILE_ID integer primary key auto_increment,
+  FILE_DATE datetime not null,
+  FILE_NAME varchar(100) not null,
+  FILE_AUTEUR varchar(400) not null
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table T_BILLET (
+  BIL_ID integer primary key auto_increment,
+  BIL_DATE datetime not null,
+  BIL_TITRE varchar(100) not null,
+  BIL_CONTENU varchar(400) not null
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table T_GAME (
+  GAME_ID integer primary key auto_increment,
+  GAME_DATE datetime not null,
+  GAME_TITRE varchar(100) not null,
+  GAME_CONTENU varchar(400) not null
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table T_COMMENTAIRE (
+  COM_ID integer primary key auto_increment,
+  COM_DATE datetime not null,
+  COM_AUTEUR varchar(100) not null,
+  COM_CONTENU varchar(200) not null,
+  BIL_ID integer not null,
+  constraint fk_com_bil foreign key(BIL_ID) references T_BILLET(BIL_ID)
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table T_UTILISATEUR (
+  UTIL_ID integer primary key auto_increment,
+  UTIL_LOGIN varchar(100) not null,
+  UTIL_MDP varchar(100) not null
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table T_PAGES (
+  PAGE_ID integer primary key auto_increment,
+  PAGE_CONTENU MEDIUMTEXT not null
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+# INSERT
+insert into T_FILES(FILE_DATE, FILE_NAME, FILE_AUTEUR) values
+(NOW(), 'test.js', 'lawadmin');
+insert into T_FILES(FILE_DATE, FILE_NAME, FILE_AUTEUR) values
+(NOW(), 'test2.js', 'admin');
+
+
+insert into T_BILLET(BIL_DATE, BIL_TITRE, BIL_CONTENU) values
+(NOW(), 'Premier billet', 'Bonjour monde ! Ceci est le premier billet sur mon blog.');
+insert into T_BILLET(BIL_DATE, BIL_TITRE, BIL_CONTENU) values
+(NOW(), 'Au travail', 'Il faut enrichir ce blog dès maintenant.');
+
+insert into T_GAME(GAME_DATE, GAME_TITRE, GAME_CONTENU) values
+(NOW(), 'Premier GAME', 'Bonjour monde ! Ceci est le premier GAME sur mon blog.');
+insert into T_GAME(GAME_DATE, GAME_TITRE, GAME_CONTENU) values
+(NOW(), 'Au travail', 'Il faut enrichir ce blog dès maintenant.');
+
+insert into T_COMMENTAIRE(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID) values
+(NOW(), 'A. Nonyme', 'Bravo pour ce début', 1);
+insert into T_COMMENTAIRE(COM_DATE, COM_AUTEUR, COM_CONTENU, BIL_ID) values
+(NOW(), 'Moi', 'Merci ! Je vais continuer sur ma lancée', 1);
+
+insert into T_UTILISATEUR(UTIL_LOGIN, UTIL_MDP) values
+('admin', 'secret');

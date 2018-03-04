@@ -1,0 +1,12 @@
+body{
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background: url('../img/Space_Nuclear_war_view_from_the_Earth') #000 no-repeat;
+	background-size: cover;
+}
+
+canvas{
+	/*border: 1px solid #51e4ff;*/
+	margin: 0 auto;
+}

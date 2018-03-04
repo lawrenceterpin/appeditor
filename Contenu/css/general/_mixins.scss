@@ -1,0 +1,20 @@
+/* --- VARIABLES --- */
+/* -- polices -- */
+$font-robotoregular : robotoregular;
+$font-robotobold    : robotobold;
+
+
+/* -- couleurs -- */
+$color1: #6A1B9A;
+$color2: #279636;
+
+
+
+/* --- MIXINS --- */
+@mixin font-robotoregular {
+  font-family: $font-robotoregular;
+}
+
+@mixin font-robotobold {
+  font-family: $font-robotobold;
+}
